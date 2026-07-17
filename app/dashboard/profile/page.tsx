@@ -2,23 +2,44 @@
 import { useState, useEffect, useRef } from "react";
 import { User, Save, Camera, ShieldCheck } from "lucide-react";
 
+// Define the shape of your form data
+interface UserProfile {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  address: string;
+  profilePic: string;
+}
+
 export default function ProfilePage() {
-  const fileInputRef = useRef(null);
-  const [formData, setFormData] = useState({
-    firstName: "", lastName: "", email: "", phone: "", address: "", profilePic: ""
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [formData, setFormData] = useState<UserProfile>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    profilePic: "",
   });
 
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
-    if (savedUser) setFormData(JSON.parse(savedUser));
+    if (savedUser) {
+      try {
+        setFormData(JSON.parse(savedUser));
+      } catch (e) {
+        console.error("Failed to parse user data", e);
+      }
+    }
   }, []);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormData(prev => ({ ...prev, profilePic: reader.result }));
+        setFormData((prev) => ({ ...prev, profilePic: reader.result as string }));
       };
       reader.readAsDataURL(file);
     }
@@ -45,7 +66,7 @@ export default function ProfilePage() {
                 <User size={64} className="text-slate-300" />
               )}
             </div>
-            <button 
+            <button
               onClick={() => fileInputRef.current?.click()}
               className="absolute bottom-2 right-2 bg-slate-900 p-2 rounded-full text-white hover:bg-cyan-600 transition-all"
             >
@@ -66,7 +87,7 @@ export default function ProfilePage() {
           <InputField label="Email" name="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
           <InputField label="Phone" name="phone" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} />
         </div>
-        
+
         <InputField label="Address" name="address" value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} />
 
         <button onClick={handleSave} className="w-full bg-slate-900 text-white p-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-cyan-600 transition-all mt-6">
@@ -77,16 +98,23 @@ export default function ProfilePage() {
   );
 }
 
-function InputField({ label, name, value, onChange }) {
+// Typed InputField component
+interface InputFieldProps {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function InputField({ label, name, value, onChange }: InputFieldProps) {
   return (
     <div className="space-y-2">
       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{label}</label>
-      <input 
-        name={name} 
-        // This ensures the input is always controlled (never undefined)
-        value={value ?? ""} 
-        onChange={onChange} 
-        className="w-full p-4 bg-slate-50 rounded-2xl border border-slate-100 outline-none focus:ring-2 ring-cyan-500" 
+      <input
+        name={name}
+        value={value ?? ""}
+        onChange={onChange}
+        className="w-full p-4 bg-slate-50 rounded-2xl border border-slate-100 outline-none focus:ring-2 ring-cyan-500"
       />
     </div>
   );
