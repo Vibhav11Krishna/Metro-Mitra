@@ -2,16 +2,30 @@
 import { useState } from "react";
 import { Bell, CheckCircle2, AlertTriangle, Info, Clock, Trash2 } from "lucide-react";
 
+// Define the shape of your notification object
+interface Notification {
+  id: number;
+  type: "pnr" | "task" | "alert";
+  title: string;
+  msg: string;
+  time: string;
+  read: boolean;
+}
+
 export default function NotificationsPage() {
-  const [notifications, setNotifications] = useState([
+  // Explicitly type the useState
+  const [notifications, setNotifications] = useState<Notification[]>([
     { id: 1, type: "pnr", title: "PNR Status Confirmed", msg: "Your ticket (123-456) is now confirmed.", time: "10 mins ago", read: false },
     { id: 2, type: "task", title: "Daily Audit Completed", msg: "Your transit audit for Jul 16 is synced.", time: "2 hours ago", read: true },
     { id: 3, type: "alert", title: "Train Delay Warning", msg: "Train 12345 is running 15 mins late.", time: "5 hours ago", read: true },
   ]);
 
-  const deleteNotification = (id) => setNotifications(notifications.filter(n => n.id !== id));
+  // Define the id type explicitly
+  const deleteNotification = (id: number) => 
+    setNotifications(notifications.filter(n => n.id !== id));
 
-  const getIcon = (type) => {
+  // Define the type for the type parameter
+  const getIcon = (type: string) => {
     if (type === "pnr") return <CheckCircle2 className="text-green-500" />;
     if (type === "task") return <Info className="text-cyan-500" />;
     return <AlertTriangle className="text-amber-500" />;
