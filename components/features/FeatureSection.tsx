@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { TrainFront, AlertTriangle, BarChart3, ShieldCheck, Search, Bot } from "lucide-react";
 
@@ -20,19 +20,25 @@ const features = [
 export default function FeaturesSection() {
   const router = useRouter();
 
-  // Container animation variants
-  const containerVariants = {
+  // Explicitly typed animation variants
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 } // Staggers the animation of children
+      transition: { staggerChildren: 0.15 }
     }
   };
 
-  // Card animation variants
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.6, 
+        ease: "easeOut" as const 
+      } 
+    }
   };
 
   return (
@@ -57,8 +63,7 @@ export default function FeaturesSection() {
         <p className="text-slate-600 mb-16 text-lg max-w-2xl">
           Advanced AI-driven modules engineered to streamline transit oversight and enhance the commuter experience.
         </p>
-
-        {/* Staggered Animation Container */}
+        
         <motion.div 
           variants={containerVariants}
           initial="hidden"
