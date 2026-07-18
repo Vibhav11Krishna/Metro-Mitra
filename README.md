@@ -43,11 +43,11 @@ MetroMitra AI is a comprehensive transit intelligence engine designed to elimina
 
 ##  Key Features
 
-- **1: 1: AI-Powered Complaint Engine**: Utilizes a 7-stage NLP pipeline for automatic ticket categorization and prioritization using ml model random classifier
-- **2: Geospatial Intelligence**: Decoupled architecture leveraging PostgreSQL and PostGIS for high-performance coordinate lookups.
-- **3: Role-Based Access Control (RBAC)**: Secure partitioning ensuring distinct environments for commuter services and administrative oversight.
-- **4: 4: Real-time Synchronization**: Latency-optimized polling mechanism for live GTFS-RT transit data.
-- **5: 5: Fully Responsive**: Custom Tailwind CSS architecture ensures a perfect experience on any mobile device.
+ **1: 1: AI-Powered Complaint Engine**: Utilizes a 7-stage NLP pipeline for automatic ticket categorization and prioritization using ml model random classifier
+ **2: Geospatial Intelligence**: Decoupled architecture leveraging PostgreSQL and PostGIS for high-performance coordinate lookups.
+ **3: Role-Based Access Control (RBAC)**: Secure partitioning ensuring distinct environments for commuter services and administrative oversight.
+ **4: 4: Real-time Synchronization**: Latency-optimized polling mechanism for live GTFS-RT transit data.
+ **5: 5: Fully Responsive**: Custom Tailwind CSS architecture ensures a perfect experience on any mobile device.
 
 ---
 
