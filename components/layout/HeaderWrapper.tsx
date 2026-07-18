@@ -2,10 +2,9 @@
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/layout/Navbar"; 
 
-export default function HeaderWrapper() {
+export default function HeaderWrapper({ onOpenVideo }: { onOpenVideo: () => void }) {
   const pathname = usePathname();
 
-  // Updated: Changed "/user-dashboard" to "/dashboard" to match your app folder structure
   const hideNavbarPaths = [
     "/admin-dashboard", 
     "/dashboard", 
@@ -14,12 +13,12 @@ export default function HeaderWrapper() {
     "/admin-login"
   ];
 
-  // Logic: Hides the Navbar if the URL starts with any of the paths above
   const shouldHideNavbar = hideNavbarPaths.some(path => pathname.startsWith(path));
 
   if (shouldHideNavbar) {
     return null;
   }
 
-  return <Navbar />;
+  // Pass the onOpenVideo function down to the Navbar
+  return <Navbar onOpenVideo={onOpenVideo} />;
 }

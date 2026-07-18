@@ -11,14 +11,13 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col w-full">
       <HeroSection />
-<FeatureShowcase />
+      <FeatureShowcase />
       <AboutSection />
-      <FeatureSection/>
-      <StationSection/>
-      <TeamSection/>
-      <ContactSection/>
-      <Footer/>
-      
+      <FeatureSection />
+      <StationSection />
+      <TeamSection />
+      <ContactSection />
+      <Footer />
     </main>
   );
 }

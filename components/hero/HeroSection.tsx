@@ -68,10 +68,13 @@ export default function HeroSection() {
           Metro<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-rose-500">Mitra</span>
         </h1>
         
-        <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
-          Intelligent autonomous transit oversight for modern cities. <br />
-          Seamless connectivity powered by real-time predictive intelligence.
-        </p>
+        <p className="text-lg sm:text-xl max-w-2xl mx-auto mb-12 font-bold leading-relaxed">
+  <span className="text-slate-900">Intelligent autonomous transit for modern cities.</span>
+  <br />
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-rose-500">
+    Seamless connectivity, powered by predictive AI.
+  </span>
+</p>
 
         <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
           <a href="/#features" className="w-full sm:w-auto">
