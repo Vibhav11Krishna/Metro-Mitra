@@ -48,7 +48,7 @@ export default function Login() {
           </div>
           
           <h1 className="text-5xl font-extrabold mb-3 tracking-tight text-white">Welcome Back</h1>
-          <p className="text-stone-400 text-lg max-w-sm mx-auto">Sign in to continue your transit management oversight.</p>
+          <p className="text-stone-400 text-lg max-w-sm mx-auto">Login to continue your transit management oversight.</p>
         </div>
       </div>
 <div className="absolute top-8 left-10">
@@ -62,7 +62,7 @@ export default function Login() {
       {/* Right Panel: Login Form */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center px-10 lg:px-20 bg-white shadow-2xl">
         <div className="mb-10">
-          <h2 className="text-4xl font-extrabold text-stone-950 tracking-tight">Sign In</h2>
+          <h2 className="text-4xl font-extrabold text-stone-950 tracking-tight">Login</h2>
           <p className="text-stone-500 mt-2">Enter your credentials to access your portal.</p>
         </div>
 
@@ -78,7 +78,7 @@ export default function Login() {
           </div>
           
           <button type="submit" className="w-full bg-gradient-to-r from-cyan-600 to-rose-500 py-4 rounded-2xl font-bold text-white text-lg mt-6 shadow-lg hover:opacity-90 transition-all">
-            SIGN IN
+            Login
           </button>
           
           <p className="text-center text-stone-600 mt-6">

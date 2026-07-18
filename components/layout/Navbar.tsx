@@ -38,7 +38,19 @@ export default function Navbar({ onOpenVideo }: { onOpenVideo: () => void }) {
           <button onClick={onOpenVideo} className="px-4 py-2 text-sm font-semibold text-slate-700 border border-slate-200 rounded-lg hover:border-cyan-500 hover:text-cyan-700 transition-all">
             Live Demo
           </button>
-          <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="rounded-full bg-gradient-to-r from-cyan-600 to-rose-500 px-6 py-2 text-sm font-bold text-white shadow-lg">Get Started</button>
+          
+          <div className="relative">
+            <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="rounded-full bg-gradient-to-r from-cyan-600 to-rose-500 px-6 py-2 text-sm font-bold text-white shadow-lg">Get Started</button>
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute right-0 mt-3 w-48 rounded-2xl bg-white border border-slate-100 shadow-xl overflow-hidden py-1 z-50">
+                  <a href="/signup" className="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 border-b border-slate-100">Sign Up (New)</a>
+                  <a href="/login" className="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 border-b border-slate-100">User Login</a>
+                  <a href="/admin-login" className="block px-4 py-3 text-sm font-medium text-rose-600 hover:bg-rose-50">Admin Login</a>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -48,37 +60,25 @@ export default function Navbar({ onOpenVideo }: { onOpenVideo: () => void }) {
       </div>
 
       {/* Mobile Menu */}
-     {/* Mobile Menu */}
-<AnimatePresence>
-  {isMobileMenuOpen && (
-    <motion.div 
-      initial={{ height: 0, opacity: 0 }} 
-      animate={{ height: "auto", opacity: 1 }} 
-      exit={{ height: 0, opacity: 0 }} 
-      className="md:hidden overflow-hidden border-t border-slate-100 bg-white px-6 py-4 flex flex-col gap-4"
-    >
-      {navLinks.map((link) => (
-        <a 
-          key={link.name} 
-          href={link.href} 
-          className="block text-sm font-medium text-slate-600 hover:text-cyan-600 transition-colors" 
-          onClick={() => setIsMobileMenuOpen(false)} // This closes the menu
-        >
-          {link.name}
-        </a>
-      ))}
-      <button 
-        onClick={() => { 
-          onOpenVideo(); 
-          setIsMobileMenuOpen(false); 
-        }} 
-        className="w-full text-center py-2 border border-slate-200 rounded-lg text-sm font-semibold hover:border-cyan-500 hover:text-cyan-700 transition-all"
-      >
-        Live Demo
-      </button>
-    </motion.div>
-  )}
-</AnimatePresence>
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }} 
+            animate={{ height: "auto", opacity: 1 }} 
+            exit={{ height: 0, opacity: 0 }} 
+            className="md:hidden overflow-hidden border-t border-slate-100 bg-white px-6 py-4 flex flex-col gap-4"
+          >
+            {navLinks.map((link) => (
+              <a key={link.name} href={link.href} className="block text-sm font-medium text-slate-600 hover:text-cyan-600 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                {link.name}
+              </a>
+            ))}
+            <button onClick={() => { onOpenVideo(); setIsMobileMenuOpen(false); }} className="w-full text-center py-2 border border-slate-200 rounded-lg text-sm font-semibold hover:border-cyan-500 hover:text-cyan-700 transition-all">
+              Live Demo
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

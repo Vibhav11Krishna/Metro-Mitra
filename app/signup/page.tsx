@@ -96,7 +96,7 @@ const handleSignup = (e: React.FormEvent) => {
             Continue with Google
           </button>
           
-          <p className="text-center text-slate-600">Already have an account? <a href="/login" className="text-rose-500 font-bold hover:underline">Sign In</a></p>
+          <p className="text-center text-slate-600">Already have an account? <a href="/login" className="text-rose-500 font-bold hover:underline">Login</a></p>
 
           <div className="mt-12 pt-6 border-t border-stone-100 text-center space-y-4">
             <div className="flex justify-center gap-6 text-xs text-stone-400 font-semibold uppercase tracking-wider">
