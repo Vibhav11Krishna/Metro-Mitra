@@ -7,7 +7,7 @@
 [![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
 
-MetroMitra AI is a comprehensive transit intelligence engine designed to eliminate commuter friction. By merging real-time travel assistance with a high-priority complaint ranking system, we ensure faster resolution for citizens and seamless operations for administration.
+MetroMitra AI is a AI powered comprehensive transit intelligence engine designed to eliminate commuter friction. By merging real-time travel assistance with a high-priority complaint ranking system, we ensure faster resolution for citizens and seamless operations for administration.
 
 ---
 
